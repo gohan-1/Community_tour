@@ -1,9 +1,5 @@
 pragma solidity >=0.5.0 <0.9.0;
 
-/** 
- * @title Ballot
- * @dev Implements voting process along with vote delegation
- */
 contract CommunityTour {
     uint public totalAmount;
     
