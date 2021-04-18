@@ -141,7 +141,7 @@ contract CommunityTour {
 
      // even we can set limit amount of he wanted and even the preson can reject a particular transction before execution these things will need more time.
      //so not include in the project 
-     function sendViaTransfer(address payable _to) public payable onlyInvestor(msg.sender) onlyDepty(_to){
+     function Transfer(address payable _to) public payable onlyInvestor(msg.sender) onlyDepty(_to){
          
          require(getBalance(owner)>minValue);
          require(msg.value>minValue);

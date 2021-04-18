@@ -27,7 +27,7 @@ contract('CommunityTour', ([deployer,Investor,  Depty]) => {
       oldInvestorBalance = await web3.eth.getBalance(Investor)
       oldInvestorBalance = new web3.utils.BN(oldInvestorBalance)
 
-      result = await CommunityTour.sendViaTransfer(Depty, { from:Investor, value: web3.utils.toWei('1', 'Ether') })
+      result = await CommunityTour.Transfer(Depty, { from:Investor, value: web3.utils.toWei('1', 'Ether') })
       let newInvestorBalance = await web3.eth.getBalance(Depty)
 
       assert.notEqual(newInvestorBalance.toString(),oldInvestorBalance.toString())
@@ -40,7 +40,7 @@ contract('CommunityTour', ([deployer,Investor,  Depty]) => {
     it('balance of depty to payed', async () => {
       let tipAmount = web3.utils.toWei('1', 'Ether')
 
-      // result = await CommunityTour.sendViaTransfer(Investor, { from:Depty, value: web3.utils.toWei('1', 'Ether') })
+      // result = await CommunityTour.Transfer(Investor, { from:Depty, value: web3.utils.toWei('1', 'Ether') })
       let balance= await CommunityTour.getDeptAmount(Depty)
 
       assert.equal(balance,tipAmount)
@@ -49,7 +49,7 @@ contract('CommunityTour', ([deployer,Investor,  Depty]) => {
   it('balance of Investment ', async () => {
     let tipAmount = web3.utils.toWei('2', 'Ether')
 
-    result = await CommunityTour.sendViaTransfer(Depty, { from:Investor, value: web3.utils.toWei('1', 'Ether') })
+    result = await CommunityTour.Transfer(Depty, { from:Investor, value: web3.utils.toWei('1', 'Ether') })
     let balance= await CommunityTour.getTotalAmountInvested(Investor)
      
     assert.equal(balance,tipAmount)
