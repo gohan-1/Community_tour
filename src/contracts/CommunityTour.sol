@@ -8,16 +8,20 @@ contract CommunityTour {
 
     address private owner;
 
+    //these parties can only participate in transfer of ether
     address[] public becomeInvestor;
     address[] public becomeDepty;
    
-    
+    // for getting investor to depty relation usefull for front-end
     mapping (address =>  mapping(address => uint)) public deptTableInvestor;
     mapping (address =>  mapping(address => uint) )public deptTableDepty;
   
+  //total amount of ether for both investor and user
    mapping(address => uint256 ) public totalOfDept;
    mapping(address=> uint256) public ListOfInvestment;
 
+
+   //array of dependencies (1 to many)
    mapping (address=>address[]) public listOfDepty;
    mapping (address=>address[]) public listOfInvestor;
 
@@ -70,7 +74,7 @@ contract CommunityTour {
         }
     }
 
-
+    // ether return back to investor
     function repay(address _to) public payable onlyDepty(msg.sender){
         uint _amount = deptTableDepty[msg.sender][_to];
         // no money should be extra paid
@@ -105,7 +109,7 @@ contract CommunityTour {
   
   
     // Function to return 
-    // current balance of owner
+    // current balance of person
     function getBalance(address person
     ) public view returns(uint256){
    
@@ -113,6 +117,7 @@ contract CommunityTour {
                               
     }
     
+    // get function to get the total amount
     function getTotalAmountInvested(address _investor)  view public returns(uint256){
         
        return  ListOfInvestment[_investor];
@@ -132,7 +137,10 @@ contract CommunityTour {
       
     }
     
-     // any Investor can send money to any 
+     // any Investor can send money to any Depty who is needed n number of time unless Depty hime self removed from Depty
+
+     // even we can set limit amount of he wanted and even the preson can reject a particular transction before execution these things will need more time.
+     //so not include in the project 
      function sendViaTransfer(address payable _to) public payable onlyInvestor(msg.sender) onlyDepty(_to){
          
          require(getBalance(owner)>minValue);
