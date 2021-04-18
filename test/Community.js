@@ -46,7 +46,7 @@ contract('CommunityTour', ([deployer,Investor,  Depty]) => {
       assert.equal(balance,tipAmount)
 
   })
-  it('balance of Investment to payed', async () => {
+  it('balance of Investment ', async () => {
     let tipAmount = web3.utils.toWei('2', 'Ether')
 
     result = await CommunityTour.sendViaTransfer(Depty, { from:Investor, value: web3.utils.toWei('1', 'Ether') })
