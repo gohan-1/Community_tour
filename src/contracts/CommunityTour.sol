@@ -138,9 +138,8 @@ contract CommunityTour {
     }
     
      // any Investor can send money to any Depty who is needed n number of time unless Depty hime self removed from Depty
-
      // even we can set limit amount of he wanted and even the preson can reject a particular transction before execution these things will need more time.
-     //so not include in the project 
+     //so not include in this project 
      function Transfer(address payable _to) public payable onlyInvestor(msg.sender) onlyDepty(_to){
          
          require(getBalance(owner)>minValue);
