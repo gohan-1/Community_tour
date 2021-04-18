@@ -4,7 +4,7 @@ pragma solidity >=0.5.0 <0.9.0;
  * @title Ballot
  * @dev Implements voting process along with vote delegation
  */
-contract Community {
+contract CommunityTour {
     uint public totalAmount;
     
     // minmum value to book a ticket 
